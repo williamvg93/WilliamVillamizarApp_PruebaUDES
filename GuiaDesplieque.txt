@@ -1,8 +1,17 @@
 Instrucciones:
 
 1) Crear base de datos en Mysql, abrir el archivo UdesDDL.txt, en el se encuentra el DDL de la base de datos.
+
+
 2) Abrir el proyecto WilliamVillamizarApp con visual studio code.
-3) Para ejecutar el programa utilizar el siguiente comando en el terminal: dotnet watch run -p .\ApiUdes\
+
+3) Despues de abrir el proyecto es de buena practica utilizar estos 2 comandos para solucionar errores:
+dotnet build
+dotnet restore
+
+4) en la carpeta ApiUdes hay un archivo llamando appsettings.json, en el encontrará la siguientes propiedades ConnectionStrings y MysqlConnection, en esta se encuentra las credenciales de usuario y contraseña para la base de datos, es necesario revisar que el usuario, contraseña y base de datos sean los que se tengan configurados en el pc que se vaya a ejecutar la app.
+
+5) Para ejecutar el programa utilizar el siguiente comando en el terminal: dotnet watch run -p .\ApiUdes\
 	Con esto se ejecutará el servidor y nos abrirá en el navegador una interfaz(swagger) en donde se podrán probar
 	los endpoint que se crearon.
 
