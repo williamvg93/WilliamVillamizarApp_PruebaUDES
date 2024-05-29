@@ -33,14 +33,33 @@ public class UserController : BaseController
         return _mapper.Map<List<UserDto>>(users);
     }
 
-    /* [HttpGet("GetUserByName")]
+    /*     [HttpPost("GetUserByName")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> Post(LoginDto model)
+        {
+            var us = _mapper.Map<User>(model);
+            var user = await _unitOfWork.Users.GetUserByName(us);
+            return Ok(user);
+        } */
+
+    [HttpPost("GetUserByName")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<UserDto>>> GetUserByName()
+    public async Task<ActionResult> Post(LoginDto model)
     {
-        var users = await _unitOfWork.Users.GetAllAsync();
-        return _mapper.Map<List<UserDto>>(users);
-    } */
+        var us = _mapper.Map<Login>(model);
+        var user = await _unitOfWork.Users.GetUserByName(us);
+        if (user == null)
+        {
+            var respJson = new Dictionary<string, string>()
+            {
+                {"resp","The user does not exist"}
+            };
+            return Ok(respJson);
+        }
+        return Ok(user);
+    }
 
     /* Get Data by ID */
     [HttpGet("{id}")]

@@ -20,5 +20,14 @@ public class MappingProfiles : Profile
 
         CreateMap<Userrole, UserroleDto>()
         .ReverseMap();
+
+        CreateMap<User, LoginDto>()
+        .ReverseMap();
+
+        CreateMap<Login, LoginDto>()
+        .ReverseMap();
+
+        CreateMap<ListUserRoles, ListUserRolesDto>()
+        .ReverseMap();
     }
 }

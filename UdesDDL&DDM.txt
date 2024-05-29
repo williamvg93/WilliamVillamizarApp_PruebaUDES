@@ -1,0 +1,68 @@
+DDL
+CREATE DATABASE UDES;
+USE UDES;
+
+CREATE TABLE users (
+idUser INT(12) AUTO_INCREMENT,
+name VARCHAR(50) NOT NULL,
+lastName VARCHAR(50) NOT NULL,
+docType VARCHAR(40) NOT NULL,
+idenNum INT(14) NOT NULL,
+email VARCHAR(50) NOT NULL,
+user VARCHAR(40) NOT NULL,
+password VARCHAR(40) NOT NULL,
+CONSTRAINT PK_idUser PRIMARY KEY (idUser)
+);
+
+CREATE TABLE roles (
+idRol INT(12) AUTO_INCREMENT,
+name VARCHAR(50) NOT NULL,
+Description VARCHAR(150) NOT NULL,
+CONSTRAINT PK_idRol PRIMARY KEY (idRol)
+);
+
+CREATE TABLE userRoles (
+idUserRol INT(12) AUTO_INCREMENT,
+fkIdUser INT(12) NOT NULL,
+fkIdRol INT(12) NOT NULL,
+CONSTRAINT PK_idUserRol PRIMARY KEY (idUserRol),
+CONSTRAINT FK_IdRol FOREIGN KEY (fkIdRol) REFERENCES roles(idRol),
+CONSTRAINT FK_idUser FOREIGN KEY (fkIdUser) REFERENCES users(idUser)
+);
+
+
+
+| ---------------------------------------------------------------------- |
+| ---------------------------------------------------------------------- |
+
+
+
+DDM
+
+Tabla USERS
+
+INSERT INTO udes.users (name, lastName, docType, idenNum, email, user, password) VALUES ('William', 'VillamizarGarcés', 'Cedula', '1098739317', 'william@email.com', 'william', '123456');
+
+INSERT INTO udes.users (name, lastName, docType, idenNum, email, user, password) VALUES ('Nathalia', 'Correa Rondon', 'Cedula', '1098821393', 'nathalia@email.com', 'nathalia', '123456');
+
+INSERT INTO udes.users (name, lastName, docType, idenNum, email, user, password) VALUES ('Carlos', 'Romero', 'Cedula', '1097854125', 'carlos@email.com', 'carlos', '123456');
+
+
+
+
+Tabla ROLES
+
+INSERT INTO udes.roles (name, Description) VALUES ('Profesor', 'Profesor de la unirversidad');
+
+INSERT INTO udes.roles (name, Description) VALUES ('Empleado', 'Empleados de la universidad');
+
+INSERT INTO udes.roles (name, Description) VALUES ('Estudiante', 'Estudiantes de la universidad');
+
+
+Tabla USERROLES
+
+INSERT INTO udes.userroles (fkIdUser, fkIdRol) VALUES ('1', '2');
+
+INSERT INTO udes.userroles (fkIdUser, fkIdRol) VALUES ('2', '2');
+
+INSERT INTO udes.userroles (fkIdUser, fkIdRol) VALUES ('3', '1');

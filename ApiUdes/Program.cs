@@ -88,4 +88,8 @@ dotnet ef migrations add FirstMigration --project .\Persistence\ --startup-proje
 DB Update
 dotnet ef database update --project .\Persistence\ --startup-project .\ApiUdes
 
+runApp
+dotnet watch run --project ./ApiUdes
+
 */
+

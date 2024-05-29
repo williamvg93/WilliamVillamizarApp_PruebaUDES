@@ -9,9 +9,23 @@ Instrucciones:
 dotnet build
 dotnet restore
 
-4) en la carpeta ApiUdes hay un archivo llamando appsettings.json, en el encontrará la siguientes propiedades ConnectionStrings y MysqlConnection, en esta se encuentra las credenciales de usuario y contraseña para la base de datos, es necesario revisar que el usuario, contraseña y base de datos sean los que se tengan configurados en el pc que se vaya a ejecutar la app.
+4) En la carpeta ApiUdes hay un archivo llamando appsettings.json, en el encontrará la siguientes propiedades ConnectionStrings y MysqlConnection, en esta se encuentra las credenciales de usuario y contraseña para la base de datos, es necesario revisar que el usuario, contraseña y base de datos sean los que se tengan configurados en el pc que se vaya a ejecutar la app.
 
-5) Para ejecutar el programa utilizar el siguiente comando en el terminal: dotnet watch run -p .\ApiUdes\
-	Con esto se ejecutará el servidor y nos abrirá en el navegador una interfaz(swagger) en donde se podrán probar
-	los endpoint que se crearon.
+5) si ya se creo la DB, instrucion del punto 1, es necesario hacer una actualizacion a la base de datos desde dotnet, abrir un terminal desde el visual, para mas facildiad que el terminal se abra en la carpeta raiz del programa "WilliamVillamizarApp_PruebaUDES".
+
+Despues ejecutar el siguiente comando : dotnet ef database update --project .\Persistence\ --startup-project .\ApiUdes
+
+6) Para ejecutar el programa utilizar el siguiente comando en el terminal: 
+dotnet watch run -p .\ApiUdes\
+Con esto se ejecutará el servidor y nos abrirá en el navegador una interfaz(swagger) en donde se podrán probar los endpoint que se crearon.
+
+7) Para el front, es muy sencillo, pueden utilizar LiveServer, ingresar a la carpeta fronted luego abrir el servidor con la plantilla index.html.
+
+8) El index contiene la pagina de login, es necesario ingresar un usuario y una contraseña que esten registrados en la BD. puede crear uno desde la interfaz(swagger) o en el proyecto hay un documento(UdesDDL.txt) en el hay unos scripts en mysql para crear unos registros.
+
+9) Despues de inciar sesion cargará la pagina de admin(dashboard) en el menú lateral hay 3 opciones para cargar las listas de usuarios, roles y usuariosRoles.
+
+10) La pagina es muy basica y solo carga información si ya existen registros en la base de datos.
+
+11) Por tiempo solo pude agregar la funcion de crear usuario en el menu o opcion de usuer, hay encontrará un boton que dice crear un nuevo usuario, si completa los campos le permitirá crear un registro nuevo.
 

@@ -32,6 +32,16 @@ public class UserroleController : BaseController
         return _mapper.Map<List<UserroleDto>>(userRoles);
     }
 
+    [HttpGet("GetUserRolList")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<ListUserRolesDto>>> GetUserRolList()
+    {
+        var userRoles = await _unitOfWork.Userroles.GetUserRolList();
+        /* return Ok(userRoles); */
+        return _mapper.Map<List<ListUserRolesDto>>(userRoles);
+    }
+
     /* Get Data by ID */
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]

@@ -8,4 +8,5 @@ namespace Domain.Interfaces;
 
 public interface IUserrole : IGenericRepository<Userrole>
 {
+    Task<IEnumerable<ListUserRoles>> GetUserRolList();
 }
